@@ -26,7 +26,6 @@ public class UsuarioDAO {
         sessao.delete(usuario);
         transacao.commit();
         sessao.close();
-        
     }
     
     public void editar(Usuario usuario){
@@ -36,17 +35,18 @@ public class UsuarioDAO {
         sessao.update(usuario);
         transacao.commit();
         sessao.close();
-    
     }
     
     public Usuario pesquisar(int id){
         sessao = HibernateUtil.
                 getSessionFactory().openSession();
         transacao = sessao.beginTransaction();
-        Usuario usuario = (Usuario) sessao.createCriteria(Usuario.class).add(Restrictions.eq("idUsuario", id)).uniqueResult();
+        Usuario usuario = (Usuario) sessao.
+                createCriteria(Usuario.class)
+                .add(Restrictions.eq("idUsuario", id))
+                .uniqueResult();
         sessao.close();
         return usuario;
-        
-        
-}
+    }
+    
 }
