@@ -1,6 +1,5 @@
 package univs.edu.funcionario;
 
-import univs.edu.funcionario.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -37,7 +36,9 @@ public class FuncionarioTableModel extends AbstractTableModel {
             case 3:
                 return funcionario.getCpf();
             case 4:
-                return funcionario.getSalario();    
+                return funcionario.getSalario();
+            case 5:
+                return funcionario.getUsuario().getLogin();
         }
         return null;
     }
@@ -51,11 +52,11 @@ public class FuncionarioTableModel extends AbstractTableModel {
             case 2:
                 return colunas[2];
             case 3:
-                return colunas[2];
+                return colunas[3];
             case 4:
-                return colunas[2];
+                return colunas[4];
             case 5:
-                return colunas[2];
+                return colunas[5];
 
         }
         return null;

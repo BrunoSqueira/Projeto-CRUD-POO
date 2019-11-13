@@ -54,7 +54,6 @@ public class UsuarioDAO {
         sessao.close();
         return usuario;
     }
-
     
     public Usuario autenticarUsuario(String login, String senha){
         sessao = HibernateUtil.

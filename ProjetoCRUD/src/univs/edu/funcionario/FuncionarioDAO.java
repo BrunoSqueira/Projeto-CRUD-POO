@@ -1,7 +1,6 @@
 package univs.edu.funcionario;
 
-import univs.edu.funcionario.*;
-import java.util.ArrayList;
+import univs.edu.usuario.*;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,7 +16,7 @@ public class FuncionarioDAO {
         sessao = HibernateUtil.
                 getSessionFactory().openSession();
         transacao = sessao.beginTransaction();
-        if(funcionario.getIdFuncionario() == 0){
+        if(funcionario.getIdFuncionario()== 0){
             sessao.save(funcionario);
         }else{
             editar(funcionario);
@@ -49,26 +48,11 @@ public class FuncionarioDAO {
                 getSessionFactory().openSession();
         transacao = sessao.beginTransaction();
         Funcionario funcionario = (Funcionario) sessao.
-                createCriteria(Funcionario.class)
+                createCriteria(Usuario.class)
                 .add(Restrictions.eq("idFuncionario", id))
                 .uniqueResult();
         sessao.close();
         return funcionario;
-    }
-
-    
-    public Funcionario autenticarFuncionario(String login, String senha){
-        sessao = HibernateUtil.
-                getSessionFactory().openSession();
-        transacao = sessao.beginTransaction();
-        Funcionario funcionario = (Funcionario) sessao.
-                createCriteria(Funcionario.class)
-                .add(Restrictions.eq("login", login))
-                .add(Restrictions.eq("senha", senha))
-                .uniqueResult();
-        sessao.close();
-        
-        return funcionario != null ? funcionario : null;
     }
     
     public List<Funcionario> listarFuncionarios(){

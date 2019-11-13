@@ -155,18 +155,22 @@ public class TelaPesquisaUsuario extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int linha = tabelaUsuario.getSelectedRow();
         if(linha == -1){
-            JOptionPane.showMessageDialog(null, "Selecione uma linha");
-        }else if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir este usuário?", "Excluir usuário", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+        }else if(JOptionPane.showConfirmDialog(null, "Deseja realmente"
+                + " excluir este usuário?", "Excluir usuário", 
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             usuario = dao.pesquisar((int) tabelaUsuario.getValueAt(linha, 0));
             dao.excluir(usuario);
             atualizarTabela();
-            JOptionPane.showMessageDialog(null, "Usuário excluido com sucesso!");
+            JOptionPane.showMessageDialog(null, "Usuário excluído!");
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
-    }
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         int linha = tabelaUsuario.getSelectedRow();
+        int linha = tabelaUsuario.getSelectedRow();
         if(linha == -1){
-            JOptionPane.showMessageDialog(null, "Selecione uma linha"); 
+            JOptionPane.showMessageDialog(null, "Selecione uma linha!");
         }else{
             usuario = dao.pesquisar((int) tabelaUsuario.getValueAt(linha, 0));
             TelaUsuario tela = new TelaUsuario();
@@ -174,10 +178,14 @@ public class TelaPesquisaUsuario extends javax.swing.JFrame {
             tela.preencherUsuario();
             tela.setVisible(true);
             dispose();
-        }        
+        }
+        
+        
     }//GEN-LAST:event_jButton3ActionPerformed
-    
-    
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
