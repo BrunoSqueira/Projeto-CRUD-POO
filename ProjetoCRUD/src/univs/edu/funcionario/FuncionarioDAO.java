@@ -19,10 +19,10 @@ public class FuncionarioDAO {
         transacao = sessao.beginTransaction();
         if(funcionario.getIdFuncionario()== 0){
             sessao.save(funcionario);
-            JOptionPane.showMessageDialog(null, "Funcionário Cadastrado");
+            JOptionPane.showMessageDialog(null, "Funcionário Cadastrado!");
         }else{
             editar(funcionario);
-            JOptionPane.showMessageDialog(null, "Funcionário Editado");
+            JOptionPane.showMessageDialog(null, "Funcionário Editado!");
         }
         transacao.commit();
         sessao.close();
@@ -51,7 +51,7 @@ public class FuncionarioDAO {
                 getSessionFactory().openSession();
         transacao = sessao.beginTransaction();
         Funcionario funcionario = (Funcionario) sessao.
-                createCriteria(Usuario.class)
+                createCriteria(Funcionario.class)
                 .add(Restrictions.eq("idFuncionario", id))
                 .uniqueResult();
         sessao.close();
